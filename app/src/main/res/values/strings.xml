@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AyanCare</string>
+    <string name="nome_remedio">Qual o nome do medicamento?</string>
+    <string name="proximo">Proximo</string>
+    <string name="procurar_remedio">PROCURAR REMÉDIO</string>
+    <string name="cadastrar_remedio">Seu remédio não está cadastrado?</string>
+    <string name="cadastrar_remedio_link">Clique aqui</string>
+    <string name="cadastrar">para cadastrar</string>
 </resources>
