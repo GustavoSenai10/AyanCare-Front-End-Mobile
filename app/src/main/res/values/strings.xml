@@ -6,4 +6,11 @@
     <string name="cadastrar_remedio">Seu remédio não está cadastrado?</string>
     <string name="cadastrar_remedio_link">Clique aqui</string>
     <string name="cadastrar">para cadastrar</string>
+    <string name="forma_medicamento">Qual é a forma deste </string>
+    <string name="medicamento"> medicamneto ? </string>
+    <string name="frequencia_medicamento">Com que frequência você toma </string>
+    <string name="frequencia_este_medicamento">este medicamento?</string>
+
+
+
 </resources>

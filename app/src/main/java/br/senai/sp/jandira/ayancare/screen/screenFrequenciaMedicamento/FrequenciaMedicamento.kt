@@ -1,4 +1,4 @@
-package br.senai.sp.jandira.ayancare.screen.screenEstoque
+package br.senai.sp.jandira.ayancare.screen.screenFrequenciaMedicamento
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,6 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,18 +32,18 @@ import br.senai.sp.jandira.ayancare.R
 import br.senai.sp.jandira.ayancare.componentes.ButtonPadrao
 import br.senai.sp.jandira.ayancare.componentes.CustomRadioButton
 
-
 @Composable
-fun Estoque(navController: NavController){
+fun FrequenciaMedicamento(navController: NavController){
 
     val options = listOf(
-        "Comprimido",
-        "Gota",
-        "Grama" ,
-        "Mililitro" ,
-        "Unidades" ,
-        "Injeção",
-        "Aplicação"
+        "Todos os dias",
+        "Em dias alternados",
+        "Dias específicos" ,
+        "Ciclo recorrente" ,
+        "A cada X dias" ,
+        "A cada X semanas",
+        "A cada X meses",
+        "Somente quando necessário"
     )
     val selectedOptions = remember { mutableStateListOf<Boolean>() }
     selectedOptions.addAll(List(options.size) { false })
@@ -51,7 +54,7 @@ fun Estoque(navController: NavController){
         modifier = Modifier
             .fillMaxSize(),
 
-    ) {
+        ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -60,7 +63,7 @@ fun Estoque(navController: NavController){
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(130.dp)
                     .padding(5.dp),
                 verticalArrangement = Arrangement.Center
 
@@ -81,14 +84,16 @@ fun Estoque(navController: NavController){
                 }
 
                 Row(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Image(
-                        painter = painterResource(id = R.drawable.medicamento) ,
+                        painter = painterResource(id = R.drawable.calendario) ,
                         contentDescription ="",
                         modifier = Modifier
-                            .size(width = 300.dp, height = 300.dp)
+                            .size(width = 200.dp, height = 200.dp)
                             .fillMaxWidth()
                     )
 
@@ -103,18 +108,23 @@ fun Estoque(navController: NavController){
                 verticalArrangement = Arrangement.Top
             ) {
                 Text(
-                    text = stringResource(id = R.string.forma_medicamento),
+                    text = stringResource(id =R.string.frequencia_medicamento),
                     color = colorResource(id = R.color.black)
                 )
 
                 Text(
-                    text = stringResource(id = R.string.medicamento),
+                    text = stringResource(id = R.string.frequencia_este_medicamento),
                     color = colorResource(id = R.color.black)
                 )
 
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
-                Text(text = "Amoxilina")
+                Row {
+                    Text(text = "Amoxilina")
+                    Spacer(modifier = Modifier.width(200.dp))
+                    Text(text = "comprimido(s)")
+                }
+
             }
             Row(
                 modifier = Modifier
@@ -145,10 +155,9 @@ fun Estoque(navController: NavController){
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center
             ) {
-                ButtonPadrao(
-                    text = stringResource(id = R.string.proximo),
-                    onClick = {navController.navigate("") }
-                )
+                ButtonPadrao(text = stringResource(id = R.string.proximo)) {
+
+                }
             }
 
 
@@ -161,10 +170,7 @@ fun Estoque(navController: NavController){
 
 @Preview
 @Composable
-fun ScreenAdicionarRemedioPreview(){
+fun FrequenciaMedicamentoPreview(){
 
 
 }
-
-
-

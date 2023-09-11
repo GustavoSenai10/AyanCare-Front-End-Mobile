@@ -10,25 +10,32 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import br.senai.sp.jandira.ayancare.R
-import br.senai.sp.jandira.ayancare.componentes.ButtonPadrao
 import br.senai.sp.jandira.ayancare.componentes.CaixaDeTexto
 
 
 @Composable
-fun TelaAdicionarRemedio(){
+fun TelaAdicionarRemedio(navController: NavController){
+
+    var textRemedio by remember {
+
+        mutableStateOf("")
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize()
@@ -38,33 +45,42 @@ fun TelaAdicionarRemedio(){
 
             ) {
 
-            Row(
+            Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(150.dp)
-                    .padding(40.dp),
-                horizontalArrangement = Arrangement.Start,
-                verticalAlignment = Alignment.Top
-            ) {
+                    .height(100.dp)
+                    .padding(5.dp),
+                verticalArrangement = Arrangement.Center
 
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier
-                        .height(30.dp)
-                        .padding(1.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.baseline_arrow_back_ios_new_24) ,
-                        contentDescription =""
-                    )
+            ) {
+                Row {
+
+                    IconButton(
+                        onClick = { /*TODO*/ },
+
+
+                        ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.baseline_arrow_back_ios_new_24),
+                            contentDescription = ""
+                        )
+
+                    }
                 }
-                Spacer(modifier = Modifier.width(10.dp))
-                Image(
-                    painter = painterResource(id = R.drawable.remedios),
-                    contentDescription = "",
-                    modifier = Modifier
-                        .size(width = 150.dp, height = 90.dp),
-                )
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.remedios) ,
+                        contentDescription ="",
+                        modifier = Modifier
+                            .size(width = 200.dp, height = 200.dp)
+                            .fillMaxWidth()
+                    )
+
+                }
             }
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -81,9 +97,12 @@ fun TelaAdicionarRemedio(){
                 )
                 Spacer(modifier = Modifier.height(20.dp))
 
-                CaixaDeTexto(valor = "", label = "") {
-
-                }
+                CaixaDeTexto(
+                    valor = textRemedio,
+                    label = "Nome do Medicamneto",
+                    aoMudar = {
+                            println("oi")
+                    })
 
             }
 
@@ -95,11 +114,9 @@ fun TelaAdicionarRemedio(){
     }
 
 }
-
-
 @Preview
 @Composable
 fun ScreenAdicionarRemedioPreview(){
-    TelaAdicionarRemedio()
+
 
 }
